@@ -15,9 +15,20 @@ formEl.addEventListener('input', throttle(onFormInput, 500));
 
 function onFormSubmit (event) {
     event.preventDefault();
-    event.currentTarget.reset();
+    
     localStorage.removeItem(STORAGE_KEY);
-    console.log(formData);
+    
+    const formElements = event.currentTarget.elements;
+    const email = formElements.email.value;
+    const message = formElements.message.value;
+
+    let currentFormData = {
+        email,
+        message
+    }
+
+    console.log(currentFormData);
+    event.currentTarget.reset();
 }
 
 function onFormInput(event) {
