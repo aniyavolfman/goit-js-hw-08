@@ -30,8 +30,8 @@ function populateTextArea() {
     const savedMessage = localStorage.getItem(STORAGE_KEY);
     if (savedMessage) {
         let dataObject = JSON.parse(savedMessage);
-        emailEl.value = dataObject.email;
-        textAreaEl.value = dataObject.message;
+        emailEl.value = dataObject.email ? dataObject.email : '';
+        textAreaEl.value = dataObject.message ? dataObject.message : '';
     }
 }
 
