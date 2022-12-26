@@ -17,7 +17,7 @@ const savedSeconds = localStorage.getItem(STORAGE_KEY);
 
 if (savedSeconds) {
 
-    player.setCurrentTime(localStorage.getItem(STORAGE_KEY)).then(function (seconds) {
+    player.setCurrentTime(savedSeconds).then(function (seconds) {
     }).catch(function (error) {
         switch (error.name) {
             case 'RangeError':
