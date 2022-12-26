@@ -8,6 +8,7 @@ const formEl = document.querySelector('.feedback-form');
 const emailEl = document.querySelector('input');
 const textAreaEl = document.querySelector('textArea');
 
+
 populateTextArea();
 
 formEl.addEventListener('submit', onFormSubmit);
@@ -31,14 +32,20 @@ function onFormSubmit (event) {
     event.currentTarget.reset();
 }
 
-function onFormInput(event) {
-    formData[event.target.name] = event.target.value;
-    let dataSrtring = JSON.stringify(formData);
-    localStorage.setItem(STORAGE_KEY, dataSrtring);
+function onFormInput() {
+
+    formData.email = emailEl.value;
+    formData.message = textAreaEl.value;
+    
+    let dataString = JSON.stringify(formData);
+    localStorage.setItem(STORAGE_KEY, dataString);
 }
+
+
 
 function populateTextArea() {
     const savedMessage = localStorage.getItem(STORAGE_KEY);
+    
     if (savedMessage) {
         let dataObject = JSON.parse(savedMessage);
         emailEl.value = dataObject.email ? dataObject.email : '';
